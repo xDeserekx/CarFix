@@ -22,6 +22,14 @@ Here're some of the project's best features:
 
 <p>3. Run the application in the development environment or build the executable file and run it on your computer.</p>
 
+<h2> Usage:</h2>
+
+* Launch the application.
+* Use the navigation buttons to add, edit, delete, search, or export car information.
+* Double-click on a car entry to view its full description.
+* Confirm actions such as deletion when prompted.
+* Export car information to PDF by clicking the "Export to PDF" button.
+
   
   
 <h2>💻 Built with</h2>
@@ -31,6 +39,7 @@ Technologies used in the project:
 *   C#: The programming language used to write the desktop application.
 *   SQL Server: Microsoft SQL Server database used to store information about cars.
 *   Windows Forms: Platform for creating user interfaces in desktop applications.
+*   iTextSharp: Utilized for generating PDF documents programmatically.
   
 <h2> Requirements</h2>
 
