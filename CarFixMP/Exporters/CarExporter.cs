@@ -28,6 +28,7 @@ namespace CarFix
 
         public void ExportToPdf(DataGridView dgv, string fileName)
         {
+
             BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
             PdfPTable pdftable = new PdfPTable(GetVisibleColumnCount(dgv));
             pdftable.DefaultCell.Padding = 3;
@@ -55,28 +56,31 @@ namespace CarFix
                 {
                     if (cell.Visible && !IsImageCell(cell))
                     {
-                        if (cell.OwningColumn.Name == "column4" && cell.OwningColumn.Name == "column9")
+                        if (cell.Value != null)
                         {
-                            if (DateTime.TryParse(cell.Value.ToString(), out DateTime dateValue))
+                            if (cell.OwningColumn.Name == "column4" || cell.OwningColumn.Name == "column9")
                             {
-                                string formattedDate = dateValue.Date.ToString("yyyy-MM-dd");
-                                pdftable.AddCell(new Phrase(formattedDate, text));
+                                if (DateTime.TryParse(cell.Value.ToString(), out DateTime dateValue))
+                                {
+                                    string formattedDate = dateValue.Date.ToString("yyyy-MM-dd");
+                                    pdftable.AddCell(new Phrase(formattedDate, text));
+                                }
+                                else
+                                {
+                                    pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
+                                }
                             }
                             else
                             {
                                 pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
                             }
                         }
-                        else
-                        {
-                            pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
-                        }
                     }
                 }
             }
 
             var savefiledialoge = new SaveFileDialog();
-            savefiledialoge.FileName = filename;
+            savefiledialoge.FileName = fileName;
             savefiledialoge.DefaultExt = ".pdf";
             if (savefiledialoge.ShowDialog() == DialogResult.OK)
             {
