@@ -101,9 +101,7 @@ namespace CarFixMP
 
         private void btnExportPdf_Click(object sender, EventArgs e)
         {
-            //ExportToPdf(dataGridView);
             CarExporter.ExportToPdf(dataGridView,filename);
-            
         }
 
         // Event handler method for cell double click in the DataGridView
