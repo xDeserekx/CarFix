@@ -9,8 +9,8 @@ namespace CarFixMP
         public string Information { get; set; }
         public string Price { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime CreatedAt { get;  }
+        public DateTime UpdatedAt { get;  }
 
 
         public Car(string brand, string model, string information, string price)
@@ -19,8 +19,8 @@ namespace CarFixMP
             Model = model;
             Information = information;
             Price = price;
-            CreatedAt = DateTime.Today;
-            UpdatedAt = DateTime.Today;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
         }
 
 
