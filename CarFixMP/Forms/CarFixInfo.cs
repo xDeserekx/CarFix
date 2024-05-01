@@ -1,9 +1,13 @@
 ﻿using CarFix;
-
+using CarFix.CustomControls;
 using CarFix.Interfaces;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Org.BouncyCastle.Asn1.Cmp;
+using Org.BouncyCastle.Tls;
 using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -19,6 +23,11 @@ namespace CarFixMP
         private string filename;
         readonly string id;
         CarExporter CarExporter;
+        public Point mouseLocation;
+        bool mouseDown;
+        private Point offset;
+
+
 
 
         public CarFixInfo()
@@ -28,7 +37,9 @@ namespace CarFixMP
             CarExporter = new CarExporter(dataGridView,filename);
             dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            Display();
+            CustomButtons.SetDefault(this);
         }
 
         public void Display() =>
@@ -124,6 +135,46 @@ namespace CarFixMP
         }
 
 
+
+
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+           CustomButtons.Exit();
+        }
+
+        private void btnMaximalize_Click(object sender, EventArgs e)
+        {
+            CustomButtons.Maximize(this);
+        }
+
+        private void btnMinimalize_Click(object sender, EventArgs e)
+        {
+            CustomButtons.Minimize(this);
+        }
+
+        private void mouse_Down(object sender, MouseEventArgs e)
+        {
+            offset.X = e.X;
+            offset.Y = e.Y;
+            mouseDown = true;
+
+
+        }
+
+        private void mouse_Move(object sender, MouseEventArgs e)
+        {
+            if (mouseDown == true)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
+            }
+        }
+
+        private void mouse_Up(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
     }
 }
 
