@@ -23,23 +23,8 @@ namespace CarFix.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var con = DbRegister.GetConnection();
-            string login = "SELECT * FROM users_table WHERE username= '" + txtUsername.Text + "' AND password= '" + txtPassword.Text + "'";
-            SqlCommand cmd = new SqlCommand(login, con);
-
-            if (txtUsername.Text == "" && txtPassword.Text == "")
-            {
-                MessageBox.Show("Username and Password fields are empty", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                cmd.ExecuteNonQuery();
-                con.Close();
-                new CarFixInfo().Show();
-   this.Hide();
-            }
-         
-
+            LoginManager.Login(txtUsername.Text, txtPassword.Text);
+            this.Hide();
         }
 
         private void lblCreateAccount_Click(object sender, EventArgs e)
@@ -60,7 +45,7 @@ namespace CarFix.Forms
             }
         }
 
-        private void PictureQuit_Click(object sender, EventArgs e) => CustomButtons.Exit() ;
+        private void PictureQuit_Click(object sender, EventArgs e) => CustomButtons.Exit();
 
     }
 }

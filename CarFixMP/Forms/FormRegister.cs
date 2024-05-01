@@ -22,35 +22,11 @@ namespace CarFix.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "" && txtPassword.Text == "" && txtConfirmPassword.Text == "")
-            {
-                MessageBox.Show("Username and Password fields are empty", "Registration failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (txtPassword.Text == txtConfirmPassword.Text)
-            {
-                var con = DbRegister.GetConnection();
-                
-                string register = "INSERT INTO users_table VALUES ('" + txtUsername.Text + "','" + txtPassword.Text + "')";
-                SqlCommand cmd = new SqlCommand(register, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-
-                txtUsername.Text = "";
-                txtPassword.Text = "";
-                txtConfirmPassword.Text = "";
-
-                MessageBox.Show("Your account has been succesfully created", "Registration success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Passwords does not match. Please Re-enter", "Registration failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPassword.Text = "";
-                txtConfirmPassword.Text = "";
-                txtPassword.Focus();
-
-            }
+            RegisterManager.Register(txtUsername.Text, txtPassword.Text, txtConfirmPassword.Text);
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtConfirmPassword.Text = "";
         }
-
 
 
         private void lblBackToLogin_Click(object sender, EventArgs e)
