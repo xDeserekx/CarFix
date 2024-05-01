@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarFix.Forms;
 
 namespace CarFixMP
 {
@@ -20,7 +21,7 @@ namespace CarFixMP
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new CarFixInfo());
+                Application.Run(new FormLogin());
             }
             else
             {
