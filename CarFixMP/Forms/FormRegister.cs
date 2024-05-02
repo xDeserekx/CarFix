@@ -22,11 +22,31 @@ namespace CarFix.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            try
+            {
             RegisterManager.Register(txtUsername.Text, txtPassword.Text, txtConfirmPassword.Text);
             txtUsername.Text = "";
             txtPassword.Text = "";
             txtConfirmPassword.Text = "";
+            }
+            catch(SqlException ex)
+            {
+                if (ex.Number == 1801)
+                {
+                    MessageBox.Show("A database with the same name already exists. Please choose a different username or delete the existing database.", "Registration failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while trying to register.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        
 
 
         private void lblBackToLogin_Click(object sender, EventArgs e)

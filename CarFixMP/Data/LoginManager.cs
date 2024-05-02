@@ -11,22 +11,6 @@ namespace CarFix.Data
 {
     public class LoginManager
     {
-        public static SqlConnection GetConnection()
-        {
-            //string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarFixAccountsDb.mdf;Integrated Security=True";
-            string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=CarFixDb;Integrated Security=True";
-            SqlConnection con = new SqlConnection(sql);
-
-            try
-            {
-                con.Open();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("SQL database not loaded! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return con;
-        }
 
         public static void Login(string username, string password)
         {
@@ -36,8 +20,11 @@ namespace CarFix.Data
                 return;
             }
 
-            using (var con = LoginManager.GetConnection())
+            try
             {
+using (var con = DbCar.GetConnection())
+            {
+                con.Open();
                 string loginQuery = "SELECT * FROM users_table WHERE username= @username AND password= @password";
                 SqlCommand cmd = new SqlCommand(loginQuery, con);
                 cmd.Parameters.AddWithValue("@username", username);
@@ -54,6 +41,16 @@ namespace CarFix.Data
                     MessageBox.Show("Invalid username or password", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            }
+            catch(SqlException ex) 
+            {
+                MessageBox.Show("An error occurred while trying to login.","Login Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
     }

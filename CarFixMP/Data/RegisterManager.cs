@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarFixMP;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,17 +25,37 @@ namespace CarFix.Data
                 return;
             }
 
-            using (var con = LoginManager.GetConnection())
+            try
             {
-                string registerQuery = "INSERT INTO users_table (username, password) VALUES (@username, @password)";
-                SqlCommand cmd = new SqlCommand(registerQuery, con);
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
+                using (var con = DbCar.GetConnection())
+                {
+                    con.Open();
+                    string registerQuery = "INSERT INTO users_table (username, password) VALUES (@username, @password)";
+                    SqlCommand cmd = new SqlCommand(registerQuery, con);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
 
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("Your account has been successfully created", "Registration success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            MessageBox.Show("Your account has been successfully created", "Registration success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (SqlException ex)
+            {
+                if (ex.Number == 1801)
+                {
+                    MessageBox.Show("A database with the same name already exists. Please choose a different username or delete the existing database.", "Registration failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while trying to register. Please try again later or contact support.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred. Please try again later or contact support.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
+}
 }
