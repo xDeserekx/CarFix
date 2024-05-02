@@ -14,6 +14,7 @@ namespace CarFixMP
         public static SqlConnection GetConnection()
         {
             string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarFixDb.mdf;Integrated Security=True";
+            //string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=CarFixDb;Integrated Security=True";
             SqlConnection con = new SqlConnection(sql);
 
             try
