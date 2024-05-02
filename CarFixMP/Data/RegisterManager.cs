@@ -47,15 +47,15 @@ namespace CarFix.Data
                 }
                 else
                 {
-                    MessageBox.Show("An error occurred while trying to register. Please try again later or contact support.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred while trying to register.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An unexpected error occurred. Please try again later or contact support.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An unexpected error occurred.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
     }
 }
-}
+

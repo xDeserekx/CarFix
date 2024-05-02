@@ -24,7 +24,6 @@ namespace CarFix.Forms
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LoginManager.Login(txtUsername.Text, txtPassword.Text);
-            this.Hide();
         }
 
         private void lblCreateAccount_Click(object sender, EventArgs e)
