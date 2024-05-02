@@ -152,7 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControls\CustomButtons.cs" />
-    <Compile Include="Data\DbRegister.cs" />
+    <Compile Include="Data\LoginManager.cs" />
     <Compile Include="Data\RegisterManager.cs" />
     <Compile Include="Forms\FormLogin.cs">
       <SubType>Form</SubType>
