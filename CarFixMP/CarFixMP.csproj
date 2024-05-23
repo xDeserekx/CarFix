@@ -251,10 +251,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Add.png" />
-    <Content Include="Resources\ExportPdf.png" />
-    <Content Include="Resources\Refresh.png" />
+    <Content Include="Resources\PDF.png" />
     <Content Include="LogoCarFIx.ico" />
-    <None Include="Resources\audi-rs6-on-the-road.png" />
+    <Content Include="Resources\Refresh.png" />
     <None Include="Resources\Pencil.png" />
     <None Include="Resources\bin.png" />
   </ItemGroup>

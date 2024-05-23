@@ -13,8 +13,8 @@ namespace CarFixMP
     {
         public static SqlConnection GetConnection()
         {
-            string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarFixDb.mdf;Integrated Security=True";
-            //string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=CarFixDb;Integrated Security=True";
+            //string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarFixDb.mdf;Integrated Security=True";
+            string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=CarFixDb;Integrated Security=True";
             SqlConnection con = new SqlConnection(sql);
 
             try
@@ -24,6 +24,13 @@ namespace CarFixMP
             catch (SqlException ex)
             {
                 MessageBox.Show("SQL database not loaded! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
             }
             return con;
         }
@@ -45,6 +52,7 @@ namespace CarFixMP
 
             try
             {
+                con.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Added successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -72,6 +80,7 @@ namespace CarFixMP
 
             try
             {
+                con.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Added successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -92,6 +101,7 @@ namespace CarFixMP
 
             try
             {
+                con.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Deleted successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -14,8 +14,6 @@ namespace CarFix.UnitTest
     [TestClass]
     public class DbCarTests
     {
-
-
         [TestMethod]
         public void TestConnection()
         {

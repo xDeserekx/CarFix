@@ -47,7 +47,7 @@
             this.lblCreateAccount.AutoSize = true;
             this.lblCreateAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCreateAccount.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblCreateAccount.ForeColor = System.Drawing.Color.Black;
+            this.lblCreateAccount.ForeColor = System.Drawing.Color.White;
             this.lblCreateAccount.Location = new System.Drawing.Point(105, 435);
             this.lblCreateAccount.Name = "lblCreateAccount";
             this.lblCreateAccount.Size = new System.Drawing.Size(104, 16);
@@ -59,7 +59,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.Color.DimGray;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(94, 410);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(142, 16);
@@ -85,7 +85,7 @@
             this.CheckBoxShowLoginPassword.AutoSize = true;
             this.CheckBoxShowLoginPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckBoxShowLoginPassword.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CheckBoxShowLoginPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.CheckBoxShowLoginPassword.ForeColor = System.Drawing.Color.White;
             this.CheckBoxShowLoginPassword.Location = new System.Drawing.Point(154, 271);
             this.CheckBoxShowLoginPassword.Name = "CheckBoxShowLoginPassword";
             this.CheckBoxShowLoginPassword.Size = new System.Drawing.Size(116, 20);
@@ -98,7 +98,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.DimGray;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(35, 211);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 16);
@@ -108,8 +108,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(35, 129);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 16);
@@ -137,12 +138,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(45, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 37);
+            this.label1.Size = new System.Drawing.Size(124, 37);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Get Started";
+            this.label1.Text = "Sign in";
             // 
             // PictureQuitLogin
             // 
@@ -161,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(37)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(300, 500);
             this.Controls.Add(this.PictureQuitLogin);
             this.Controls.Add(this.lblCreateAccount);
@@ -175,6 +176,7 @@
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.DimGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLogin";

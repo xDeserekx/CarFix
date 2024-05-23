@@ -73,16 +73,6 @@ namespace CarFix.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap audi_rs6_on_the_road {
-            get {
-                object obj = ResourceManager.GetObject("audi-rs6-on-the-road", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bin {
             get {
                 object obj = ResourceManager.GetObject("bin", resourceCulture);
@@ -93,9 +83,9 @@ namespace CarFix.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ExportPdf {
+        internal static System.Drawing.Bitmap LogoCarFIx {
             get {
-                object obj = ResourceManager.GetObject("ExportPdf", resourceCulture);
+                object obj = ResourceManager.GetObject("LogoCarFIx", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +93,9 @@ namespace CarFix.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LogoCarFIx {
+        internal static System.Drawing.Bitmap PDF {
             get {
-                object obj = ResourceManager.GetObject("LogoCarFIx", resourceCulture);
+                object obj = ResourceManager.GetObject("PDF", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +116,16 @@ namespace CarFix.Properties {
         internal static System.Drawing.Bitmap Refresh {
             get {
                 object obj = ResourceManager.GetObject("Refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Refresh1 {
+            get {
+                object obj = ResourceManager.GetObject("Refresh1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -6,6 +6,7 @@ using iTextSharp.text.pdf;
 using Org.BouncyCastle.Asn1.Cmp;
 using Org.BouncyCastle.Tls;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -34,9 +35,10 @@ namespace CarFixMP
         {
             InitializeComponent();
             form = new FormCar(car);
-            CarExporter = new CarExporter(dataGridView,filename);
+            CarExporter = new CarExporter(dataGridView, filename);
             dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView.Sort(dataGridView.Columns[1],ListSortDirection.Descending);
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             Display();
             CustomButtons.SetDefault(this);
@@ -44,10 +46,10 @@ namespace CarFixMP
 
         public void Display() =>
         DbCar.DisplayAndSearch("SELECT ID, Brand, Model, Information, Price, CreatedAt, UpdatedAt FROM car_table", dataGridView);
-    
+
         private void txtSearch_TextChanged(object sender, EventArgs e) =>
         DbCar.DisplayAndSearch("SELECT ID, Brand, Model, Information, Price, CreatedAt, UpdatedAt FROM car_table WHERE Brand LIKE'%" + txtSearch.Text + "%'", dataGridView);
-        
+
 
         private void DisplayAndSearch(object sql, DataGridView dataGridView)
         {
@@ -55,6 +57,10 @@ namespace CarFixMP
             if (dr == DialogResult.Yes)
             {
                 DbCar.DeleteCar(id);
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    dataGridView.Rows[i].Cells["column1"].Value = i + 1;
+                }
                 DisplayAndSearch(sql, dataGridView);
 
             }
@@ -109,10 +115,9 @@ namespace CarFixMP
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) => Display();
-
         private void btnExportPdf_Click(object sender, EventArgs e)
         {
-            CarExporter.ExportToPdf(dataGridView,filename);
+            CarExporter.ExportToPdf(dataGridView, filename);
         }
 
         // Event handler method for cell double click in the DataGridView
@@ -134,13 +139,9 @@ namespace CarFixMP
             }
         }
 
-
-
-
-
         private void btnClose_Click(object sender, EventArgs e)
         {
-           CustomButtons.Exit();
+            CustomButtons.Exit();
         }
 
         private void btnMaximalize_Click(object sender, EventArgs e)
@@ -174,6 +175,23 @@ namespace CarFixMP
         private void mouse_Up(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView.Rows.Count)
+            {
+                if (e.ColumnIndex == dataGridView.Columns["column1"].Index)
+                {
+
+                    dataGridView.Rows[e.RowIndex].Selected = !dataGridView.Rows[e.RowIndex].Selected;
+
+                    if (e.RowIndex > 0 && dataGridView.Rows[e.RowIndex - 1].Selected)
+                        dataGridView.Rows[e.RowIndex - 1].Selected = false;
+                    if (e.RowIndex < dataGridView.Rows.Count - 1 && dataGridView.Rows[e.RowIndex + 1].Selected)
+                        dataGridView.Rows[e.RowIndex + 1].Selected = false;
+                }
+            }
         }
     }
 }

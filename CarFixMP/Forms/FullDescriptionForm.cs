@@ -72,6 +72,7 @@ namespace CarFix
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FullDescriptionForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -108,7 +109,7 @@ namespace CarFix
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(12, 140);
@@ -172,14 +173,14 @@ namespace CarFix
             // btnSavePdf
             // 
             this.btnSavePdf.BackColor = System.Drawing.Color.Transparent;
-            this.btnSavePdf.BackgroundImage = global::CarFix.Properties.Resources.ExportPdf;
+            this.btnSavePdf.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSavePdf.BackgroundImage")));
             this.btnSavePdf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSavePdf.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSavePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePdf.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSavePdf.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePdf.Location = new System.Drawing.Point(355, 563);
+            this.btnSavePdf.Location = new System.Drawing.Point(374, 569);
             this.btnSavePdf.Name = "btnSavePdf";
-            this.btnSavePdf.Size = new System.Drawing.Size(50, 50);
+            this.btnSavePdf.Size = new System.Drawing.Size(35, 35);
             this.btnSavePdf.TabIndex = 8;
             this.btnSavePdf.UseVisualStyleBackColor = false;
             this.btnSavePdf.Click += new System.EventHandler(this.btnSavePdf_Click);
@@ -187,7 +188,7 @@ namespace CarFix
             // FullDescriptionForm
             // 
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(421, 616);
             this.Controls.Add(this.btnSavePdf);
             this.Controls.Add(this.textInformation);
@@ -198,10 +199,14 @@ namespace CarFix
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FullDescriptionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Details";
             this.ResumeLayout(false);
             this.PerformLayout();
 

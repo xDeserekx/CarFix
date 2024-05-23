@@ -166,12 +166,6 @@
         YII=
 </value>
   </data>
-  <data name="Column2.HeaderText" xml:space="preserve">
-    <value>Marka</value>
-  </data>
-  <data name="btnSettings.Text" xml:space="preserve">
-    <value>Ustawienia</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAA
